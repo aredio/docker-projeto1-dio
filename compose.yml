@@ -6,4 +6,12 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./www:/usr/local/apache2/htdocs
+      - ./www:/usr/local/apache2/htdocs/
+    depends_on:
+      - php
+
+  php:
+    image: php:8.1-fpm
+    container_name: php-fpm
+    volumes:
+      - ./www:/var/www/html
